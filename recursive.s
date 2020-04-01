@@ -44,4 +44,16 @@
 
   #note: the return values of the subprogram2 stays in the stack which is used by the subprogram3 
 
-      
+      #ending the strings with end character and newline character
+      beq $t2, 0, end_wl 
+      beq $t2, 10, end_wl
+
+      addi $s2, $s2, 1 	# $s2 += 1
+
+            #formatting the print values with comma
+      li $v0, 11
+      li $a0, 44
+      syscall
+      j word_list
+end_wl:
+
