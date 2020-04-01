@@ -64,4 +64,14 @@ end_wl:
       subprogram_2:
       la $s7, ($ra)	#loading the value from $ra to register $s7
       la $t9, ($a0)	#loading the value from $a0 to register $t9
+      
 
+      addi $t8, $a1, 0 #storing the end address
+            la $t7, max_input  #loading the first address of the user input 
+
+            #In the following clear_front and clear_back, I am trying to remove the spaces from the front and the back of the string 
+            clear_front: 
+                beq $t9, $t8, end_deletion  #exiting the loop 
+                add $t6, $t7, $t9			
+                lb $t5, ($t6)
+                #keep looping if there is still space 
