@@ -27,4 +27,12 @@
        beq $t2, 10, end_substring
        beq $t2, 44, end_substring
 
+      #Increasing the count of the iterator 
+       add $s2, $s2, 1
+       j substring
+
+   end_substring:
+       	#toading arguments to make a subprogram_2 call 
+      la $a0, ($s1)
+      la $a1, ($s2)
 
