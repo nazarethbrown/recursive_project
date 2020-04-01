@@ -120,3 +120,19 @@ end_wl:
                 bgt $s6, 20, large_num	#if length of a valid string is greater than 20, then it's too large 
                 li $v0, 1 
                 j end_string
+             large_num: 
+                li $v0, 0 
+                la $t4, not_valid
+                j end_string
+            not_a_number: 
+            #throwing a message for invalid character 
+                li $v0, 0 
+                la $t4, not_valid
+            end_string: 
+            #loading the stack with return values 
+                addi $sp, $sp, -4 
+                sw $t4, ($sp)
+                addi $sp, $sp, -4 
+                sw $v0, ($sp)
+                la $ra, ($s7)
+                jr $ra
