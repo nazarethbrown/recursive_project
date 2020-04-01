@@ -35,4 +35,13 @@
        	#toading arguments to make a subprogram_2 call 
       la $a0, ($s1)
       la $a1, ($s2)
+      
+       #calling subprogram2 using jump-and-link 
+      jal subprogram_2
 
+      #calling subprogram3 using jump-and-link 
+      jal subprogram_3
+
+  #note: the return values of the subprogram2 stays in the stack which is used by the subprogram3 
+
+      
