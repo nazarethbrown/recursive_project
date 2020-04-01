@@ -103,3 +103,20 @@ end_wl:
                 beq $t9, $t8, end_convert 
                 add $t6, $t7, $t9 
                 lb $t5, ($t6)
+            la $a0, ($t5)
+                jal sub_program1 
+                bne $v0, 0, continue 
+                j not_a_number 
+            continue: 
+            	#converting the hexadcimal to decimal using sll command 
+            	#shift of 4 bits to left is to raise the power of 32
+                sll $t4, $t4, 5 
+                sub $t6, $t5, $v1 
+                add $t4, $t4, $t6
+                addi $s6, $s6, 1 
+                addi $t9, $t9, 1
+                j convert
+            end_convert:
+                bgt $s6, 20, large_num	#if length of a valid string is greater than 20, then it's too large 
+                li $v0, 1 
+                j end_string
