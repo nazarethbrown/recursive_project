@@ -81,4 +81,25 @@ end_wl:
             addup: 
                 addi $t9, $t9, 1 
                 j clear_front
+       clear_back: 
+                beq $t9, $t8, end_deletion
+                add $t6, $t7, $t8 
+                addi $t6, $t6, -1 
+                lb $t5, ($t6)
+                beq $t5, 32, adddown 
+                beq $t5, 9, adddown 
+                j end_deletion
+            adddown: 
+                addi $t8, $t8, -1 
+                j clear_back
 
+            end_deletion: 
+                beq $t9, $t8, not_a_number # if there is no character in a string, it's a NAN
+                li $t4, 0 				   # first decimal value 
+                li $s6, 0 				   #length of the string 
+
+            convert: 
+            	#converting the characters calling the subprogram1
+                beq $t9, $t8, end_convert 
+                add $t6, $t7, $t9 
+                lb $t5, ($t6)
